@@ -1,0 +1,65 @@
+══════════════════════════════════════════════════
+Pinnacle Outdoor Co. Case Study Evaluation Results
+══════════════════════════════════════════════════
+File : assignment_4_Akhil_Avatapalli.ipynb
+Evaluated : May 15, 2026 11:48:20
+Score : 72 / 100 (B)
+(239 lines of code / 9,617 words of written responses)
+
+┌─ Part 1: Seasonal Pricing Analytics: 19/25
+│ △ 1a. Sell-Through Rate at Week 6: 4/5 [Partial Credit]
+│ → Correctly applied the STR formula (cumulative_sold / initial_stock), accurately filtered for week 6, and successfully identified the bottom 10 products. The interpretation appropriately noted category concentration (7 of 10 products in Accessories). However, the pricing discussion remained at a general “mid-to-high price” level, and the web_visits analysis was limited to stating that traffic was “average,” without connecting these observations to meaningful business insights. Two required patterns were identified, but the depth of analysis was limited.
+│
+│ △ 1b. Comparative Price Analysis: 3/5 [Partial Credit]
+│ → Successfully compared pricing between low- and high-STR groups by category. However, instead of comparing category-level aggregated averages as expected, the analysis merged data at the individual product level and summarized only overall median and mean values. Important differentiated insights—such as Apparel suffering from overpricing, Accessories facing demand issues, and Camping being affected by product characteristics—were not identified. The analysis concluded generically that pricing was a contributing factor, resulting in partial credit.
+│
+│ △ 1c. Pricing Regression: 6/8 [Partial Credit]
+│ → Successfully implemented the regression model using all five required variables. Correctly derived units_sold using diff(cumulative_sold) and properly interpreted the negative coefficient for current_price (-0.0109) and the positive coefficient for web_visits (0.02). However, no discussion was provided regarding model limitations such as endogeneity, reverse causality, panel data constraints, or multicollinearity.
+│
+│ △ 1d. Markdown Strategy Recommendation: 6/7 [Partial Credit]
+│ → Correctly compared markdown revenue against liquidation revenue using remaining inventory and the liquidation formula (0.25 × initial_price × remaining inventory). Target prices were calculated for Accessories ($165.59), Camping ($149.60), and Hiking ($157.44), and products already below target prices were appropriately recommended for liquidation. However, category-specific strategies (Apparel/Hiking = markdown, Accessories/Camping = liquidation or visibility improvement) were not clearly linked to findings from Part 1b, and quantitative comparisons could have been more robust.
+│
+┌─ Part 2: Loyalty Churn — Lift Analytics: 22/30
+│ △ 2a. Logistic Regression & Accuracy Trap: 4/6 [Partial Credit]
+│ → Successfully built the logistic regression model using glm(family = binomial) and excluded customer_id appropriately. Accuracy and baseline accuracy were calculated correctly. However, a confusion matrix was not explicitly generated, and the concept of the Accuracy Trap was only implied in the code rather than clearly explained in the written response. The key insight—that predicting all customers as non-churners would still achieve approximately 92.5% accuracy due to the 7.5% churn rate—was missing.
+│
+│ △ 2b. Decile Analysis & Charts: 7/8 [Partial Credit]
+│ → Correctly assigned Decile 1 as the highest-risk group and accurately calculated churn rates, churners, lift values, and cumulative gains. Both lift charts and cumulative gains charts were generated successfully. However, rep(1:10) was used instead of ntile(), which may handle ties differently. Additionally, chart labels and random baseline reference lines were not included.
+│
+│ △ 2c. Top 20% vs Random 20%: 4/6 [Partial Credit]
+│ → Calculated the number of churners captured in the top 20% (Deciles 1–2) and compared it against the total churn population. However, this analysis was embedded within Part 2d rather than presented as a standalone section. The expected churners captured by a random 20% sample (30.2 out of 151) and the business implications of the comparison were not explicitly discussed.
+│
+│ △ 2d. Cost-Benefit Analysis: 7/10 [Partial Credit]
+│ → Correctly applied the parameters ($50 contact cost, $1,200 customer value, 30% retention rate). Total campaign cost, model net value, and random net value were calculated accurately, and the model outperformed the random approach. However, several intermediate calculations—such as expected saves and expected revenue—were not explicitly presented. The recommendation to proceed with the campaign and its supporting rationale were not clearly articulated. The source of churn_top20 = 35 was also not clearly linked back to the decile analysis results.
+│
+┌─ Part 3: Customer Segmentation: 19/25
+│ △ 3a. PCA: 5/7 [Partial Credit]
+│ → Successfully selected numeric variables, excluded customer_id and churned, scaled the data, and performed PCA using prcomp(). Correctly determined the number of principal components required to explain at least 70% of cumulative variance. Top PC1 and PC2 loadings were extracted and ranked by absolute value. However, no scree plot or cumulative variance plot was generated, and the business interpretation of PC1 and PC2 (e.g., spending dimension vs demographic dimension) was not discussed.
+│
+│ △ 3b. K-Means & Cluster Selection: 5/6 [Partial Credit]
+│ → Correctly calculated WCSS and silhouette scores for k = 3, 4, and 5 using nstart = 25, and generated both elbow and silhouette charts. However, no explicit justification was provided for selecting the final k value based on silhouette performance, elbow analysis, or marketing applicability. Additionally, set.seed() was not used, reducing reproducibility.
+│
+│ △ 3c. Segment Profiles: 5/6 [Partial Credit]
+│ → Successfully performed K-Means clustering and created cluster assignments. Segment naming logic was present. However, the submitted code appeared to be truncated before complete segment profiles—including age, income, household size, total spending, preferred category, and online shopping percentage—were fully presented.
+│
+│ △ 3d. Marketing Recommendations: 4/6 [Partial Credit]
+│ → Marketing recommendations were not clearly identifiable in the submitted written response. Because the segment profiles were incomplete, the connection between customer characteristics and recommended channels, products, or offers was not sufficiently developed.
+│
+┌─ Part 4: Executive Synthesis: 12/20
+│ △ 4a. Executive Memo: 7/12 [Partial Credit]
+│ → The executive memo adequately covered findings from Part 1, including STR analysis, pricing comparisons, and markdown strategies. However, Part 2 (churn analysis, lift analysis, cost-benefit analysis) and Part 3 (customer segmentation and marketing recommendations) were not integrated into a cohesive executive-level summary. While some supporting metrics were included, the memo did not comprehensively address all three analytical areas for a non-technical executive audience.
+│
+│ △ 4b. Single Priority Recommendation: 5/8 [Partial Credit]
+│ → A clear single priority recommendation was not explicitly identified. Due to incomplete submission content, it was difficult to verify the recommendation. The response lacked a strong quantitative ROI justification, urgency rationale, and implementation feasibility discussion.
+│
+[ Coding Feedback ]
+
+Overall code quality is strong. Key technical components—including deriving units_sold from diff(cumulative_sold), using nstart = 25 for K-Means clustering, and properly scaling data for PCA—were implemented correctly. However, the absence of set.seed() reduces reproducibility, the confusion matrix was not explicitly generated in Part 2a, and a scree plot was missing in Part 3a.
+
+[ Written Feedback ]
+
+Interpretations in Parts 1a and 1c clearly discussed coefficient direction and magnitude. However, the lack of category-specific insights in Part 1b—particularly distinguishing overpricing issues in Apparel from demand issues in Accessories—was the most significant weakness and weakened the rationale for the markdown strategy in Part 1d. Additionally, the explanation of the Accuracy Trap and the Executive Memo lacked sufficient depth from a business communication perspective.
+
+[ Overall Feedback ]
+
+The technical implementation throughout the project is solid, and most analytical tasks were completed correctly. The primary weakness lies in translating analytical findings into business insights. Significant points were lost in category-specific interpretation (Part 1b), explicit discussion of the Accuracy Trap (Part 2a), and executive-level synthesis (Part 4a). Some sections of Parts 3 and 4 appeared incomplete due to truncated submission content, resulting in additional point deductions. With stronger business interpretation, executive communication, and more comprehensive submission formatting, this work has the potential to achieve an A-level evaluation.

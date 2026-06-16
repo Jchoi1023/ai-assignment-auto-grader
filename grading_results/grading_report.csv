@@ -1,0 +1,10 @@
+﻿File Name,Score,Max Score,Grade,Evaluation Date,Part 1: Seasonal Pricing Analytics_Score,Part 1: Seasonal Pricing Analytics_Max Score,Part 2: Loyalty Churn — Lift Analytics_Score,Part 2: Loyalty Churn — Lift Analytics_Max Score,Part 3: Customer Segmentation_Score,Part 3: Customer Segmentation_Max Score,Part 4: Executive Synthesis_Score,Part 4: Executive Synthesis_Max Score,Overall Feedback
+assignment_4_Hanna_Abuhay.ipynb,83,100,B,2026-05-14 20:09:53,22,25,26,30,22,25,13,20,"전반적으로 높은 수준의 분석을 Python으로 잘 구현하였으며, 데이터 로직과 비즈니스 해석 모두 대체로 정확합니다. Part 1과 Part 2의 코딩 파트는 특히 완성도가 높습니…"
+Assignment_4_Akhil_Avatapalli.ipynb,72,100,B,2026-05-14 20:14:43,18,25,20,30,19,25,15,20,"Pinnacle 케이스의 4개 파트를 모두 시도하고 핵심 분석(STR, 회귀, lift, PCA, K-Means)을 올바르게 구현한 점이 강점입니다. 코드 로직은 대체로 정답과 동…"
+Assignment_4_Shrutika_Shelke.ipynb,78,100,B,2026-05-14 20:18:28,19,25,24,30,21,25,14,20,"Pinnacle 케이스의 전체 분석 흐름을 충실히 따르며 4개 파트를 모두 완성한 점이 강점입니다. STR 계산, 로지스틱 회귀, 분위 분석, PCA/K-Means 등 핵심 분석 …"
+assignment_4_Hanna_Abuhay.ipynb,88,100,A,2026-05-15 10:52:18,22,25,28,30,23,25,15,20,"전반적으로 매우 완성도 높은 과제로, 코드 품질과 비즈니스 해석 모두 우수함. Part 2(Lift Analytics)는 거의 완벽하게 수행되었으며, Part 3(Segmentat…"
+assignment_4_Hanna_Abuhay.ipynb,84,100,B,2026-05-15 11:39:07,22,25,27,30,21,25,14,20,"전반적으로 코드 품질이 높고 분석 파이프라인이 체계적으로 구성되어 있습니다. Part 1(22/25)과 Part 2(27/30)는 특히 잘 수행되었으며, 회귀 기반 마크다운 수익 …"
+assignment_4_Hanna_Abuhay.ipynb,88,100,A,2026-05-15 11:42:57,22,25,27,30,22,25,17,20,"전반적으로 높은 수준의 과제로, 코드 정확성과 비즈니스 해석 모두 우수함. 특히 decile 분석과 lift chart 구현, K-Means 세그멘테이션 파이프라인이 정답지 로직과…"
+assignment_4_Hanna_Abuhay.ipynb,88,100,A,2026-05-15 11:45:04,22,25,28,30,22,25,16,20,"전반적으로 높은 수준의 분석을 수행했으며, 코드 정확성과 비즈니스 해석 모두 양호합니다. Part 2의 lift 분석과 decile 계산이 특히 강점이며, Part 1의 STR 계…"
+assignment_4_Akhil_Avatapalli.ipynb,72,100,B,2026-05-15 11:47:11,19,25,22,30,18,25,13,20,"코딩 역량은 전반적으로 양호하며 STR 계산, 회귀 모델, PCA, K-Means 등 기술적 구현은 대부분 정확합니다. 그러나 이 과제의 핵심인 비즈니스 해석과 실행 가능한 권고가…"
+assignment_4_Akhil_Avatapalli.ipynb,72,100,B,2026-05-15 11:48:20,19,25,22,30,19,25,12,20,"기술적 구현 능력은 전반적으로 우수하며 대부분의 분석 단계를 올바르게 수행했습니다. 핵심 약점은 분석 결과를 비즈니스 인사이트로 전환하는 서술 부분으로, 특히 카테고리별 차별화 해…"

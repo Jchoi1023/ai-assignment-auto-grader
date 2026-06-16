@@ -1,0 +1,190 @@
+{
+  "course": "BUAN 6356",
+  "assignment": "Pinnacle Outdoor Co. Case Study",
+  "total_points": 100,
+  "grading_philosophy": "R (base R / tidyverse / data.table) 과 Python (pandas / sklearn / statsmodels 등) 모두 허용합니다. 언어·라이브러리·코드 스타일·변수명은 감점 사유가 아닙니다. 결과와 로직이 동등하면 만점입니다. 이 과제는 비즈니스 애널리틱스 과제입니다 — 코드보다 해석, 비즈니스 논리, 실행 가능한 권고에 점수가 집중되어 있습니다. 기술적으로 맞는 코드라도 비즈니스 해석이 없으면 만점을 받을 수 없습니다.",
+
+  "parts": [
+    {
+      "id": "P1",
+      "name": "Part 1: Seasonal Pricing Analytics",
+      "points": 25,
+      "items": [
+        {
+          "id": "P1a",
+          "name": "1a. Sell-Through Rate at Week 6",
+          "points": 5,
+          "type": "both",
+          "description": "STR 계산(코딩) + 하위 10개 공통 패턴 해석(서술) — 두 가지 모두 같은 5점 안에 포함",
+          "full_credit": "① STR = cumulative_sold/initial_stock 공식 정확, week==6 필터, 하위 10개 정렬·식별 완벽. ② 해석에서 카테고리 편중(Accessories 다수), 가격대(중고가), web_visits 등 패턴 중 2개 이상 구체적 수치와 함께 서술.",
+          "partial_credit": "코드 완벽 + 해석 1개 패턴만 언급 → 4점. 코드 완벽 + 해석 전혀 없음 → 2~3점. 코드에서 week 필터 누락 또는 정렬 오류 + 해석 있음 → 3점.",
+          "no_credit": "STR 공식 자체가 틀리거나 코드·해석 모두 없음.",
+          "grading_note": "R(base R/tidyverse) 또는 Python(pandas) 모두 인정. 카테고리명·STR 수치 등 구체적 숫자가 해석에 포함되면 가산 평가."
+        },
+        {
+          "id": "P1b",
+          "name": "1b. Comparative Price Analysis",
+          "points": 5,
+          "type": "both",
+          "description": "STR<40% 제품과 STR>70% 제품의 카테고리별 가격 비교 + 카테고리마다 다른 원인 해석",
+          "full_credit": "① 카테고리별 low/high STR 그룹 가격 집계 및 비교 계산. ② 카테고리마다 원인이 다름을 서술 — Apparel(과가격), Accessories(수요 문제, 가격 아님), Camping(제품 특성), Hiking(부분적 과가격) 중 3개 이상 언급하거나 '카테고리별로 원인이 다르다'는 핵심 인사이트 포함.",
+          "partial_credit": "계산은 맞으나 해석이 일률적('모두 가격이 문제') → 3점. 카테고리 분류 없이 전체 평균만 비교 → 2점.",
+          "no_credit": "비교 계산 자체 없음.",
+          "grading_note": "정답지와 정확히 같은 카테고리명·수치가 아니어도, 카테고리별 차별화 인사이트가 있으면 만점."
+        },
+        {
+          "id": "P1c",
+          "name": "1c. Pricing Regression",
+          "points": 8,
+          "type": "both",
+          "description": "units_sold ~ current_price + week + category + web_visits + competitor_price 회귀 + 두 계수 해석 + 한계 언급",
+          "full_credit": "① 지정된 5개 변수 모두 포함한 회귀 실행. ② current_price 계수: 음수이며 '가격 상승 → 판매 감소, 가격 탄력성 확인' 해석. ③ web_visits 계수: 양수이며 '온라인 트래픽이 수요의 선행 지표' 해석. ④ endogeneity(역인과) 또는 panel 구조 한계 중 1개 이상 언급.",
+          "partial_credit": "회귀 코드 + 두 계수 방향 해석 있으나 한계 미언급 → 6점. 회귀 코드 + 계수 1개만 해석 → 5점. 회귀 코드만 있고 해석 전혀 없음 → 3점. 변수 일부 누락(4개 이하) + 해석 있음 → 5점.",
+          "no_credit": "회귀 자체를 실행하지 않음.",
+          "grading_note": "units_sold를 직접 구하는 방식(diff(cumulative_sold) 등)도 정답. Python의 smf.ols() / statsmodels OLS 모두 허용. 한계는 endogeneity, 역인과, panel 구조, 다중공선성 중 어느 것이든 언급하면 인정."
+        },
+        {
+          "id": "P1d",
+          "name": "1d. Markdown Strategy Recommendation",
+          "points": 7,
+          "type": "both",
+          "description": "하위 10개 제품에 대한 마크다운 vs 청산 수치 비교 + 카테고리별 차별화 전략 권고",
+          "full_credit": "① 각 제품의 마크다운 예상 수익 vs 청산 수익(initial_price × 25%) 수치 계산·비교. ② 카테고리별 차별화 전략: Apparel·Hiking = 마크다운, Accessories·Camping = 청산 또는 가시성 전략(또는 이에 준하는 논리). ③ 이미 마크다운 적용 후에도 STR이 낮은 제품은 청산 권고.",
+          "partial_credit": "수치 비교 있으나 카테고리 차별화 없이 일률적 마크다운 권고 → 4~5점. 카테고리 차별화 있으나 수치 비교 없음 → 4점. 마크다운 비율(%)만 제시하고 수익 비교 없음 → 3점.",
+          "no_credit": "근거 없는 일반적 권고 또는 내용 없음.",
+          "grading_note": "정확한 70% clearance 가정이 아니어도 합리적 가정(예: 50~80%) 사용하면 인정. 수치가 정답지와 다소 다른 반올림 차이는 정답 처리."
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "name": "Part 2: Loyalty Churn — Lift Analytics",
+      "points": 30,
+      "items": [
+        {
+          "id": "P2a",
+          "name": "2a. Logistic Regression & Accuracy Trap",
+          "points": 6,
+          "type": "both",
+          "description": "로지스틱 회귀 실행 + confusion matrix + accuracy trap 설명",
+          "full_credit": "① glm(family=binomial) 또는 동등한 함수로 모델 실행(customer_id 제외). ② 0.5 threshold confusion matrix 생성 및 accuracy 계산. ③ accuracy trap 명확히 설명: base churn rate ~7.5%이므로 '모두 비이탈 예측'해도 ~92.5% accuracy → accuracy는 불균형 데이터에서 misleading한 지표임을 서술.",
+          "partial_credit": "모델 + confusion matrix 있으나 accuracy trap 미언급 → 4점. 모델 있으나 confusion matrix 없음 + accuracy trap 언급 → 4점. 모델만 있고 해석 전혀 없음 → 2점.",
+          "no_credit": "로지스틱 회귀 자체를 실행하지 않음.",
+          "grading_note": "total_spent_12mo, avg_order_value 다중공선성 변수 제거 언급 시 가산점. Python의 sm.Logit() / smf.logit() / sklearn LogisticRegression 모두 허용."
+        },
+        {
+          "id": "P2b",
+          "name": "2b. Decile Analysis & Charts",
+          "points": 8,
+          "type": "coding",
+          "description": "10분위 분류 + 각 decile별 churn rate·churners 수·lift 계산 + lift chart + cumulative gains chart",
+          "full_credit": "① ntile(-prob, 10) 또는 동등한 방법으로 10분위(decile 1=최고위험) 분류. ② 각 decile별 churn rate, churners 수, lift(=churn_rate/base_rate) 계산. ③ lift chart(막대그래프) 생성. ④ cumulative gains chart(누적 % 선그래프) 생성.",
+          "partial_credit": "decile + lift 계산 완벽 + 차트 1개 누락 → 6점. decile + lift 있으나 차트 모두 없음 → 5점. decile 방향 반대(높은 리스크=decile 10)이나 일관성 있고 계산 맞음 → 6점.",
+          "no_credit": "decile 분류 자체 없음.",
+          "grading_note": "Python의 pd.qcut() 또는 pd.cut() 사용도 인정. 타이(동점 확률) 처리 방식에 따라 decile별 churner 수가 약간 다를 수 있음 — 전체 패턴이 맞으면 정답."
+        },
+        {
+          "id": "P2c",
+          "name": "2c. Top 20% vs Random 20%",
+          "points": 6,
+          "type": "both",
+          "description": "상위 20%(decile 1-2) churner 포착률 계산 + random 20%와 비교 + 비즈니스 가치 서술",
+          "full_credit": "① decile 1-2의 churner 수·전체 대비 % 계산. ② random 20%의 기대값(20%)과 수치 비교. ③ '모델이 제한된 예산으로 더 많은 이탈 위험 고객에게 도달' 등 비즈니스 가치 서술.",
+          "partial_credit": "수치 계산만 있고 비즈니스 해석 없음 → 4점. 방향만 맞고 수치 계산 없음 → 3점.",
+          "no_credit": "비교 자체 없음."
+        },
+        {
+          "id": "P2d",
+          "name": "2d. Cost-Benefit Analysis",
+          "points": 10,
+          "type": "both",
+          "description": "파라미터(offer=$50, CLV=$1200, save_rate=30%, top 20%) 기반 모델 vs 랜덤 5단계 계산 + 진행 권고",
+          "full_credit": "① 파라미터(50/1200/0.30) 정확히 사용. ② 모델·랜덤 각각 5단계 계산: 총비용, decile 1-2 예상 churner 수, 예상 save 수, 예상 수익, 순기대가치(net value). ③ 모델 net value > 랜덤 net value 비교. ④ 모델 캠페인 진행 권고 + 논거(모델 net value 양수 또는 랜덤 대비 우월).",
+          "partial_credit": "5단계 계산 맞으나 모델 vs 랜덤 비교 없이 한쪽만 → 7점. 계산 맞으나 권고 없음 → 7점. 파라미터는 맞으나 일부 단계 누락 → 5~6점. net value가 음수로 나와 '진행 반대' 결론 — 계산 로직이 맞고 논거 일관되면 → 6점(계산 점수 인정, 권고 점수 부분 감점).",
+          "no_credit": "비용편익 분석 자체 없음.",
+          "grading_note": "정답지의 churner 수(decile 1-2 합산)와 학생 값이 타이 처리 방식 차이로 다를 수 있음. 계산 로직이 맞으면 수치 차이는 정답 처리."
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "name": "Part 3: Customer Segmentation",
+      "points": 25,
+      "items": [
+        {
+          "id": "P3a",
+          "name": "3a. PCA",
+          "points": 7,
+          "type": "both",
+          "description": "변수 선택 + 스케일링 + PCA 실행 + 70% 분산 PC 수 + PC1/PC2 로딩 해석 + scree plot",
+          "full_credit": "① numeric 변수 선택(customer_id·churned 제외), 스케일링(scale/StandardScaler). ② PCA 실행. ③ 누적분산 70% 달성 PC 수 정확 계산. ④ PC1 로딩 해석(지출 규모/고객 가치 차원), PC2 로딩 해석(인구통계 또는 온라인/오프라인 채널 차원 등 데이터 기반 논리). ⑤ scree plot 또는 cumulative variance plot 생성.",
+          "partial_credit": "PCA 실행 + 70% PC 수 맞음 + scree plot 있으나 로딩 해석 없음 → 5점. 스케일링 누락 → -2점. scree plot 없음 → -1점. PC1만 해석하고 PC2 미언급 → -1점.",
+          "no_credit": "PCA 자체 없음.",
+          "grading_note": "total_spent_12mo·avg_order_value 다중공선성 제거 언급 시 가산점. PC2 해석이 정답지(인구통계)와 달라도(예: 온라인 비율, 채널 선호도) 데이터 기반 논리가 있으면 만점. sklearn PCA / FactoMineR 등 모두 허용."
+        },
+        {
+          "id": "P3b",
+          "name": "3b. K-Means & k 선택",
+          "points": 6,
+          "type": "both",
+          "description": "k=3,4,5 각각 total within-SS + avg silhouette + elbow/silhouette 차트 + k=3 선택 논거",
+          "full_credit": "① set.seed 또는 random_state 설정, nstart=25(또는 n_init=25) 사용. ② k=3/4/5 각각 total within-cluster SS + average silhouette score 계산. ③ elbow chart + silhouette chart 생성. ④ k=3 선택 논거(silhouette 최고 또는 elbow 감소폭 + 마케팅 실행 가능성 등).",
+          "partial_credit": "k=3/4/5 계산 + 차트 있으나 k 선택 논거 없음 → 4점. elbow 또는 silhouette 중 1개 차트 누락 → 5점. k=3만 실행 → 3점.",
+          "no_credit": "K-Means 자체 없음.",
+          "grading_note": "sklearn KMeans 또는 R kmeans() 모두 허용. k 선택이 4 또는 5여도 elbow/silhouette 근거가 명확하면 부분점수 인정."
+        },
+        {
+          "id": "P3c",
+          "name": "3c. Segment Profiles",
+          "points": 6,
+          "type": "both",
+          "description": "k=3 기준 각 세그먼트별 평균 age/income/household_size/total_spent/top category/pct_online + 의미 있는 이름",
+          "full_credit": "① 세그먼트별 평균 age, income, household_size, total spending, top product category, pct_online 집계. ② 각 세그먼트에 데이터 기반 의미 있는 이름 부여(예: Budget Browsers / Family Campers / Trail Enthusiasts 또는 동등한 이름). ③ 이름이 세그먼트 특성과 연결됨.",
+          "partial_credit": "수치 집계는 맞으나 이름 없음 → 4점. 이름만 있고 수치 집계 미흡 → 3점. 집계 변수 일부 누락(3~4개) → 5점.",
+          "no_credit": "프로파일 자체 없음.",
+          "grading_note": "정답지 이름(Budget Browsers 등)과 달라도 데이터 기반 논리적 이름이면 만점. k가 4 또는 5인 경우 일관성 있게 프로파일하면 부분점수."
+        },
+        {
+          "id": "P3d",
+          "name": "3d. Marketing Recommendations",
+          "points": 6,
+          "type": "narrative",
+          "description": "세그먼트별 채널 + 제품 카테고리 + 오퍼 유형 + 세그먼트 특성 기반 논거",
+          "full_credit": "3개 세그먼트 각각: ① 채널(email/in-store/social/mobile app 중 선택), ② 제품 카테고리(세그먼트 top category와 연결), ③ 오퍼 유형(% discount / loyalty points / early access / free shipping 중 선택), ④ 세그먼트 특성(3c 프로파일)에서 도출된 논거 포함.",
+          "partial_credit": "3개 세그먼트 모두 다루나 논거 미흡(세그먼트 특성과 연결 없음) → 4점. 1~2개 세그먼트만 다룸 → 3점.",
+          "no_credit": "세그먼트 연결 없는 일반적 마케팅 조언만.",
+          "grading_note": "채널·오퍼 선택이 정답지와 달라도 세그먼트 특성 기반 논거가 타당하면 만점."
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "name": "Part 4: Executive Synthesis",
+      "points": 20,
+      "items": [
+        {
+          "id": "P4a",
+          "name": "4a. Executive Memo",
+          "points": 12,
+          "type": "narrative",
+          "description": "CEO 대상 메모: 3개 파트 각각 비즈니스 질문 + 핵심 발견 + 권고 액션, 비전문가 언어, 수치 포함",
+          "full_credit": "① Part 1/2/3 모두 커버. ② 각 파트: 비즈니스 질문 명시 + 핵심 발견(수치 포함) + 실행 가능한 권고 액션. ③ 비전문가 언어(수식·모델 스펙 없음, jargon 없음). ④ 수치로 논거 강화(예: '400명 고위험 고객', '순기대가치 양수').",
+          "partial_credit": "2개 파트만 다룸 → 8점. 3개 파트 커버하나 수치 근거 전혀 없음 → 8점. 지나치게 기술적 언어(모델 계수, p-value 언급) → 9점. 권고 없이 발견만 나열 → 8점.",
+          "no_credit": "1개 파트만 또는 메모 형식 아님.",
+          "grading_note": "메모 형식(To/From/Re 헤더)이 없어도 내용이 충족되면 감점 없음. 길이보다 내용의 명확성과 비즈니스 포커스를 봄."
+        },
+        {
+          "id": "P4b",
+          "name": "4b. Single Priority Recommendation",
+          "points": 8,
+          "type": "narrative",
+          "description": "3개 중 1개 선택 + 정량적 ROI 논거 + 긴급성 또는 실행 용이성 포함",
+          "full_credit": "① 3개 파트 중 명확히 1개 선택. ② 정량적 ROI 논거(비용·기대수익·순가치 또는 매출 임팩트 수치 포함). ③ 긴급성(시간 제약, 이탈의 비가역성 등) 또는 실행 용이성(즉시 실행 가능, 추가 인프라 불필요 등) 논거 포함.",
+          "partial_credit": "선택은 했으나 정량 근거 없이 '더 중요하다' 수준 → 5점. 2개 이상 선택 → 4점. 논거는 있으나 정량 수치 없음 → 5점.",
+          "no_credit": "선택 없음 또는 근거 없음.",
+          "grading_note": "Part 2(정답지 권고)가 아닌 Part 1 또는 Part 3 선택도 정량 논거가 탄탄하면 만점 가능. 선택 자체가 틀린 게 아니라 논거의 질로 채점."
+        }
+      ]
+    }
+  ]
+}

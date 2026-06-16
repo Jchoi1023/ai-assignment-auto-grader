@@ -1,0 +1,65 @@
+══════════════════════════════════════════════════
+Pinnacle Outdoor Co. Case Study Evaluation Results
+══════════════════════════════════════════════════
+File      : assignment_4_Hanna_Abuhay.ipynb
+Evaluated : May 15, 2026 11:45:04
+Score     : 88 / 100 (A)
+(340 lines of code / 11,244 words of written responses)
+
+┌─ Part 1: Seasonal Pricing Analytics: 22/25
+│  ✓ 1a. Sell-Through Rate at Week 6: 5/5 [Full Credit]
+│     → Correctly applied the STR formula (cumulative_sold / initial_stock), filtered for week 6, and accurately identified the bottom 10 products using nsmallest(10). The interpretation highlighted multiple concrete patterns, including concentration in the Accessories category, higher price ranges (CAD 175–200+), and brand-specific patterns (TrailBlaze and WildEdge). Fully met the requirements for full credit.
+│
+│  △ 1b. Comparative Price Analysis: 4/5 [Partial Credit]
+│     → Successfully calculated and compared prices between low- and high-STR groups by category. Identified differentiated insights such as overpricing issues in Apparel and Hiking and product-characteristic challenges in Camping. However, Accessories were described only as “mixed,” without clearly identifying the key insight that demand, rather than pricing, was the primary issue. Three of the four categories were analyzed effectively, resulting in partial credit.
+│
+│  △ 1c. Pricing Regression: 7/8 [Partial Credit]
+│     → Successfully implemented the regression model using all five required variables with smf.ols. Clearly interpreted the negative coefficient for current_price (-0.011), the positive coefficient for web_visits (0.020), and the negative coefficient for week. Findings were communicated effectively in business language. However, discussion of model limitations—such as endogeneity, reverse causality, panel data constraints, and multicollinearity—was limited, resulting in a minor deduction.
+│
+│  △ 1d. Markdown Strategy Recommendation: 6/7 [Partial Credit]
+│     → Successfully calculated markdown revenue versus liquidation revenue using regression-based demand forecasts. Applied differentiated markdown percentages (15–25%) across STR segments. However, category-level strategic recommendations (Apparel/Hiking = markdown, Accessories/Camping = liquidation or visibility improvement) were not explicitly discussed, and the analysis focused primarily on the bottom 10 products rather than broader category strategies.
+│
+┌─ Part 2: Loyalty Churn — Lift Analytics: 28/30
+│  ✓ 2a. Logistic Regression & Accuracy Trap: 6/6 [Full Credit]
+│     → Successfully implemented the model using sm.Logit after excluding customer_id and churned. Generated a confusion matrix using a 0.5 classification threshold and calculated model accuracy. Clearly explained the Accuracy Trap by noting that predicting all customers as non-churners would still achieve high accuracy due to the approximately 7.5% churn rate, making accuracy a misleading metric for imbalanced datasets. Fully met all requirements.
+│
+│  ✓ 2b. Decile Analysis & Charts: 8/8 [Full Credit]
+│     → Correctly assigned customers into deciles using pd.qcut (Decile 1 = highest risk). Calculated churn rates, churner counts, lift values, and cumulative churn capture percentages for each decile. Successfully created both lift charts and cumulative gains charts. Fully met all requirements.
+│
+│  ✓ 2c. Top 20% vs Random 20%: 6/6 [Full Credit]
+│     → Correctly calculated churners captured within Deciles 1–2 and compared the results against a random 20% sample. Clearly articulated the business value of targeting high-risk customers, demonstrating that the model enables more efficient allocation of retention resources and budget. Fully met all requirements.
+│
+│  △ 2d. Cost-Benefit Analysis: 8/10 [Partial Credit]
+│     → Correctly applied the provided parameters ($50 contact cost, $1,200 customer value, 30% retention rate) to calculate campaign cost, expected churners, expected saves, expected revenue, and net expected value. Included a comparison between model-driven targeting and random targeting. However, some calculation steps did not perfectly align with the five-step framework in the solution guide, and not all intermediate values were explicitly presented. Recommendations were provided, but supporting quantitative evidence could have been more complete.
+│
+┌─ Part 3: Customer Segmentation: 22/25
+│  △ 3a. PCA: 6/7 [Partial Credit]
+│     → Correctly excluded customer_id and churned, applied StandardScaler, and performed PCA using sklearn. Calculated the number of principal components required to explain at least 70% of cumulative variance. Generated a scree plot or cumulative variance plot and provided interpretation of PC1 as a spending/customer-value dimension. However, PC2 was not sufficiently interpreted in terms of demographic or channel-related dimensions, resulting in a minor deduction.
+│
+│  ✓ 3b. K-Means & Cluster Selection: 6/6 [Full Credit]
+│     → Properly set random_state and used n_init = 25. Calculated total within-cluster sum of squares and silhouette scores for k = 3, 4, and 5. Generated both elbow and silhouette plots and provided a well-supported rationale for selecting k = 3 based on silhouette performance, elbow analysis, and marketing practicality. Fully met all requirements.
+│
+│  △ 3c. Segment Profiles: 5/6 [Partial Credit]
+│     → Successfully profiled segments using key variables such as age, income, household size, total spending, top product category, and online purchasing percentage. Assigned meaningful names to each segment. However, some segment descriptions lacked a strong connection between the assigned names and the underlying profile characteristics, or certain supporting variables were omitted.
+│
+│  △ 3d. Marketing Recommendations: 5/6 [Partial Credit]
+│     → Provided recommendations for all three customer segments, including suggested channels, product categories, and promotional offers. However, some recommendations remained relatively generic and were not always explicitly tied back to the quantitative characteristics identified in the segment profiles.
+│
+┌─ Part 4: Executive Synthesis: 16/20
+│  △ 4a. Executive Memo: 10/12 [Partial Credit]
+│     → Successfully integrated findings from Parts 1, 2, and 3. Clearly communicated business questions and key findings using language appropriate for non-technical stakeholders. However, the memo would have been stronger with additional quantitative support, such as the number of high-risk customers identified or estimated net financial value. Some recommendations could also have been more actionable and specific.
+│
+│  △ 4b. Single Priority Recommendation: 6/8 [Partial Credit]
+│     → Clearly selected one recommendation as the highest priority and provided supporting rationale. However, the argument lacked detailed quantitative ROI evidence, including expected costs, revenue impact, and net value estimates. The urgency and implementation feasibility discussion could also have been more compelling.
+│
+[ Coding Feedback ]
+
+The project demonstrates strong proficiency with Python libraries including pandas, statsmodels, and scikit-learn. Core analytical techniques—including regression modeling with smf.ols, logistic regression using sm.Logit, PCA, and K-Means clustering—were implemented effectively. The decile-based lift analysis using pd.qcut and the comparison between markdown and liquidation revenue strategies were particularly well executed. Additional discussion of regression model limitations, such as endogeneity and panel-data considerations, would further strengthen the analysis.
+
+[ Written Feedback ]
+
+Business communication and category-specific insights were generally strong throughout the project. In particular, the explanation of the Accuracy Trap and the business value of lift analysis were clearly articulated. The Executive Memo and Priority Recommendation sections would benefit from more extensive use of quantitative evidence, such as the number of high-risk customers identified and estimated net financial value, to further strengthen executive-level decision-making support.
+
+[ Overall Feedback ]
+
+This project demonstrates a high level of analytical competency, combining strong technical implementation with effective business interpretation. The lift analysis and decile-based targeting framework in Part 2 were particularly well executed, while the STR calculations and pricing regression analysis in Part 1 were also strong. Key opportunities for improvement include explicitly discussing model limitations (endogeneity and panel-data considerations), more clearly identifying demand-related issues within the Accessories category, and incorporating additional quantitative evidence into executive-level recommendations. Addressing these areas would elevate the project to an A+ level submission.
